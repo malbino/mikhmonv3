@@ -44,6 +44,7 @@ if ($countbinding < 2) {
 	echo "$countbinding items";
 };
 ?>
+&nbsp; | &nbsp; <a href="" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
     </h3>
 </div>
 <div class="card-body">	   
