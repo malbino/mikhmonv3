@@ -183,14 +183,22 @@ if (!isset($_SESSION["mikhmon"])) {
     $_SESSION['hua'] = "";
     include_once('./hotspot/adduser.php');
   }
+// hostoirt add mac 
+elseif ($hotspot == "users" && $prof == "all") {
+  $_SESSION['ubp'] = "";
+  $_SESSION['hua'] = "";
+  $_SESSION['ubc'] = "";
+  $_SESSION['vcr'] = "";
+  include_once('./hotspot/users.php');
+}
 
 // hotspot users
-  elseif ($hotspot == "users" && $prof == "all") {
+  elseif ($hotspot == "add-user" && $prof == "all") {
     $_SESSION['ubp'] = "";
     $_SESSION['hua'] = "";
     $_SESSION['ubc'] = "";
     $_SESSION['vcr'] = "";
-    include_once('./hotspot/users.php');
+    include_once('./hotsssspot/users.php');
   }
 
 // hotspot users filter by profile
@@ -237,6 +245,10 @@ elseif ($hotspot == "list-quick-print") {
 // add hotspot user
   elseif ($hotspotuser == "add") {
     include_once('./hotspot/adduser.php');
+    echo $disable_sci;
+  }
+  elseif ($hotspotuser == "addmac") {
+    include_once('./hotspot/addipbanding.php');
     echo $disable_sci;
   }
 

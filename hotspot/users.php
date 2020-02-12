@@ -81,7 +81,7 @@ if (!isset($_SESSION["mikhmon"])) {
     <h3><i class="fa fa-users"></i> <?= $_users ?>
       <span style="font-size: 14px">
         <?php
-        if ($counttuser == 0) {
+        if ($counttuser == 1) {
           echo "<script>window.location='./?hotspot=users&profile=all&session=" . $session . "</script>";
         } ?>
          &nbsp; | &nbsp; <a href="./?hotspot-user=add&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
