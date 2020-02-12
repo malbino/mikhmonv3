@@ -27,10 +27,9 @@ session_start();
     </div>
     <div class="card-body">
       <div class="text-center pd-5">
-        <img src="img/favicon.png" alt="MIKHMON Logo">
+        <img src="img/logoinfocal.png" style="width:240px;height:200px" alt="MIKHMON Logo">
       </div>
       <div  class="text-center">
-      <span style="font-size: 25px; margin: 10px;">MIKHMON</span>
       </div>
       <center>
       <form autocomplete="off" action="" method="post">
@@ -47,7 +46,7 @@ session_start();
         </tr>
         <tr>
           <td class="align-middle text-center">
-            <input style="width: 100%; margin-top:20px; height: 35px; font-weight: bold; font-size: 17px;" class="btn-login bg-primary pointer" type="submit" name="login" value="Login">
+            <input style="width: 100%; margin-top:20px; height: 35px; font-weight: bold; font-size: 17px;" class="btn-login bg-primary pointer" type="submit" name="login" value="Ingresar">
           </td>
         </tr>
         <tr>
