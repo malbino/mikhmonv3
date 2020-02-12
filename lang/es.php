@@ -8,6 +8,7 @@ $_action = "Action";
 $_add = "Anadir Usuarios";
 $_add_router = "Añadir Router";
 $_add_user = "Añadir Usuario";
+$_add_ipbinding = "Añadir Ip binding";
 $_add_user_profile = "Añadir Perfil";
 $_admin = "Admin";
 $_admin_settings = "Admin Settings";
