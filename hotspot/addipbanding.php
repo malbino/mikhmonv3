@@ -46,8 +46,8 @@ if (!isset($_SESSION["mikhmon"])) {
   <?php if ($_SESSION['ubp'] != "") {
     echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=" . $_SESSION['ubp'] . "&session=" . $session . "'> <i class='fa fa-close'></i> ".$_close."</a>";
   } else {
-    echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=all&session=" . $session . "'> <i class='fa fa-close'></i> ".$_close."</a>";
-  }
+    echo "    <a class='btn bg-warning' href='./?hotspot=ipbinding&profile=all&session=" . $session . "'> <i class='fa fa-close'></i> ".$_close."</a>";
+  }//se modifico la linea 24 para redireccionar a la lista de ipbinding
   ?>
     <button type="submit" onclick="loader()" class="btn bg-primary" name="save"><i class="fa fa-save"></i> <?= $_save ?></button>
   </div>

@@ -49,7 +49,7 @@ if ($countbinding < 2) {
 if ($counttuser == 0) {
 	echo "<script>window.location='./?hotspot=ipbinding&profile=all&session=" . $session . "</script>";
   } ?>
-   &nbsp; | &nbsp; <a href="./?hotspot-user=addmac&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
+   &nbsp; | &nbsp; <a href="./?hotspot=addmac&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
     </h3>
 </div>
 <div class="card-body">	   

@@ -247,7 +247,7 @@ elseif ($hotspot == "list-quick-print") {
     include_once('./hotspot/adduser.php');
     echo $disable_sci;
   }
-  elseif ($hotspotuser == "addmac") {
+  elseif ($hotspot == "addmac") {
     include_once('./hotspot/addipbanding.php');
     echo $disable_sci;
   }
