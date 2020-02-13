@@ -17,21 +17,8 @@ if (!isset($_SESSION["mikhmon"])) {
     $TotalReg = count($getuser);
     //Esta linea de abajo me trae los host post
     $srvlist = $API->comm("/ip/hotspot/print");
-    for ($i = 0; $i < $TotalReg; $i++) {
-      $ucomment = $getuser[$i]['comment'];
-      $uprofile = $getuser[$i]['profile'];
-      $acomment .= ",".$ucomment."#". $uprofile;
-    }
-
-    $ocomment=  explode(",",$acomment);
     
-    foreach (array_unique($ocomment) as $tcomment) {
-
-      if (is_numeric(substr($tcomment, 3, 3))) {
-        echo "<option value='" . explode("#",$tcomment)[0] . "' >". explode("#",$tcomment)[0]." ".explode("#",$tcomment)[1]. "</option>";
-       }
-
-     }
+   
 
     ?>
 <div class="row">
@@ -70,7 +57,18 @@ if (!isset($_SESSION["mikhmon"])) {
     <td class="align-middle">Mac Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td class="align-middle"> Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+  </tr>
+  <tr>
+    <td class="align-middle"> Type</td>
+    <td>
+			<select class="form-control" name="server" required="1">
+				<option>regular</option>
+        <option>bypassed</option>
+        <option>blocked</option>
+			
+			</select>
+		</td>
   </tr>
   <tr >
     <td  colspan="4" class="align-middle"  id="GetValidPrice"></td>
