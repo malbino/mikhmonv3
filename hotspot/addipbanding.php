@@ -102,7 +102,18 @@ if (!isset($_SESSION["mikhmon"])) {
     <td class="align-middle">Mac Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td class="align-middle"> Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+  </tr>
+  <tr>
+    <td class="align-middle"> Type</td>
+    <td>
+			<select class="form-control" name="server" required="1">
+				<option>regular</option>
+        <option>bypassed</option>
+        <option>blocked</option>
+			
+			</select>
+		</td>
   </tr>
   <tr >
     <td  colspan="4" class="align-middle"  id="GetValidPrice"></td>
