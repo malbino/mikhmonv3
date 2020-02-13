@@ -17,21 +17,53 @@ if (!isset($_SESSION["mikhmon"])) {
     $TotalReg = count($getuser);
     //Esta linea de abajo me trae los host post
     $srvlist = $API->comm("/ip/hotspot/print");
-    for ($i = 0; $i < $TotalReg; $i++) {
-      $ucomment = $getuser[$i]['comment'];
-      $uprofile = $getuser[$i]['profile'];
-      $acomment .= ",".$ucomment."#". $uprofile;
+
+    //esta linea añade nuevo ipbiding
+    if (isset($_POST['name'])) {
+      $server = ($_POST['server']);
+      $name = ($_POST['name']);
+      $password = ($_POST['pass']);
+      $profile = ($_POST['profile']);
+      $disabled = ($_POST['disabled']);
+      $timelimit = ($_POST['timelimit']);
+      $datalimit = ($_POST['datalimit']);
+      $comment = ($_POST['comment']);
+      $chkvalid = ($_POST['valid']);
+      $mbgb = ($_POST['mbgb']);
+      if ($timelimit == "") {
+        $timelimit = "0";
+      } else {
+        $timelimit = $timelimit;
+      }
+      if ($datalimit == "") {
+        $datalimit = "0";
+      } else {
+        $datalimit = $datalimit * $mbgb;
+      }
+      if ($name == $password) {
+        $usermode = "vc-";
+      }else{
+        $usermode = "up-";
+      }
+      
+        $comment = $usermode.$comment;
+      
+      $API->comm("/ip/hotspot/user/add", array(
+        "server" => "$server",
+        "name" => "$name",
+        "password" => "$password",
+        "profile" => "$profile",
+        "disabled" => "no",
+        "limit-uptime" => "$timelimit",
+        "limit-bytes-total" => "$datalimit",
+        "comment" => "$comment",
+      ));
+      $getuser = $API->comm("/ip/hotspot/user/print", array(
+        "?name" => "$name",
+      ));
+      $uid = $getuser[0]['.id'];
+      echo "<script>window.location='./?hotspot-user=" . $uid . "&session=" . $session . "'</script>";
     }
-
-    $ocomment=  explode(",",$acomment);
-    
-    foreach (array_unique($ocomment) as $tcomment) {
-
-      if (is_numeric(substr($tcomment, 3, 3))) {
-        echo "<option value='" . explode("#",$tcomment)[0] . "' >". explode("#",$tcomment)[0]." ".explode("#",$tcomment)[1]. "</option>";
-       }
-
-     }
 
     ?>
 <div class="row">
