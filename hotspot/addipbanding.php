@@ -9,6 +9,31 @@ if (!isset($_SESSION["mikhmon"])) {
 } 
 
 ?>
+<?php
+    if ($comm != "") {
+    } else {
+      echo "<option value=''>".$_comment."</option>";
+    }
+    $TotalReg = count($getuser);
+    //Esta linea de abajo me trae los host post
+    $srvlist = $API->comm("/ip/hotspot/print");
+    for ($i = 0; $i < $TotalReg; $i++) {
+      $ucomment = $getuser[$i]['comment'];
+      $uprofile = $getuser[$i]['profile'];
+      $acomment .= ",".$ucomment."#". $uprofile;
+    }
+
+    $ocomment=  explode(",",$acomment);
+    
+    foreach (array_unique($ocomment) as $tcomment) {
+
+      if (is_numeric(substr($tcomment, 3, 3))) {
+        echo "<option value='" . explode("#",$tcomment)[0] . "' >". explode("#",$tcomment)[0]." ".explode("#",$tcomment)[1]. "</option>";
+       }
+
+     }
+
+    ?>
 <div class="row">
 <div class="col-8">
 <div class="card box-bordered">

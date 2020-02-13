@@ -31,6 +31,7 @@ if (!isset($_SESSION["mikhmon"])) {
 }
 
 ?>
+
 <div class="row">
 <div id="reloadbinding">
 <div class="col-12">
@@ -46,7 +47,7 @@ if ($countbinding < 2) {
 ?><?php
 
 if ($counttuser == 0) {
-	echo "<script>window.location='./?hotspot=users&profile=all&session=" . $session . "</script>";
+	echo "<script>window.location='./?hotspot=ipbinding&profile=all&session=" . $session . "</script>";
   } ?>
    &nbsp; | &nbsp; <a href="./?hotspot-user=addmac&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> <?= $_add ?></a>
     </h3>

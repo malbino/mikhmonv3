@@ -183,7 +183,6 @@ if (!isset($_SESSION["mikhmon"])) {
     $_SESSION['hua'] = "";
     include_once('./hotspot/adduser.php');
   }
-<<<<<<< HEAD
 // hostoirt add mac 
 elseif ($hotspot == "users" && $prof == "all") {
   $_SESSION['ubp'] = "";
@@ -192,9 +191,6 @@ elseif ($hotspot == "users" && $prof == "all") {
   $_SESSION['vcr'] = "";
   include_once('./hotspot/users.php');
 }
-=======
-  
->>>>>>> 9ec5fa6dcbced4a8e792ff631e1e505aebede781
 
 // hotspot users
   elseif ($hotspot == "add-user" && $prof == "all") {
