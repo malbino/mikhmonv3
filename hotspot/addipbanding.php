@@ -18,56 +18,43 @@ if (!isset($_SESSION["mikhmon"])) {
     //Esta linea de abajo me trae los host post
     $srvlist = $API->comm("/ip/hotspot/print");
 
-    //esta linea añade nuevo ipbiding
-    if (isset($_POST['name'])) {
-      $server = ($_POST['server']);
-      $name = ($_POST['name']);
-      $password = ($_POST['pass']);
-      $profile = ($_POST['profile']);
-      $disabled = ($_POST['disabled']);
-      $timelimit = ($_POST['timelimit']);
-      $datalimit = ($_POST['datalimit']);
-      $comment = ($_POST['comment']);
-      $chkvalid = ($_POST['valid']);
-      $mbgb = ($_POST['mbgb']);
-      if ($timelimit == "") {
-        $timelimit = "0";
-      } else {
-        $timelimit = $timelimit;
-      }
-      if ($datalimit == "") {
-        $datalimit = "0";
-      } else {
-        $datalimit = $datalimit * $mbgb;
-      }
-      if ($name == $password) {
-        $usermode = "vc-";
-      }else{
-        $usermode = "up-";
-      }
-      
-        $comment = $usermode.$comment;
-      
-      $API->comm("/ip/hotspot/user/add", array(
+    if (empty($_POST['address'])&& isset($_POST['server']) && isset($_POST['macaddress']) && isset($_POST['type'])) {
+      $server = $_POST['server'];
+      $macaddress = ($_POST['macaddress']);
+      $type = ($_POST['type']);
+      //ip hotspot ip-binding add mac-address=D4:61:2E:05:77:93 address=192.167.88.43 server=all
+
+      //con esto podemos registra un nuevo ip-binding
+      $API->comm("/ip/hotspot/ip-binding/add", array(
+        "mac-address" => "$macaddress",
         "server" => "$server",
-        "name" => "$name",
-        "password" => "$password",
-        "profile" => "$profile",
-        "disabled" => "no",
-        "limit-uptime" => "$timelimit",
-        "limit-bytes-total" => "$datalimit",
-        "comment" => "$comment",
+        "type" => "$type",
       ));
-      $getuser = $API->comm("/ip/hotspot/user/print", array(
-        "?name" => "$name",
+     // $API->comm(['/ip hotspot ip-binding add type=bypassed mac-address="01:23:45:67:89:AB" address=192.168.88.254 to-address=192.168.88.254']);
+      
+    }
+    //esta linea añade nuevo ipbiding
+    if (isset($_POST['macaddress'])&& isset($_POST['address'])&& isset($_POST['server'])&& isset($_POST['type'])) {
+      $server = $_POST['server'];
+      $macaddress = ($_POST['macaddress']);
+      $address = ($_POST['address']);
+      $type = ($_POST['type']);
+      //ip hotspot ip-binding add mac-address=D4:61:2E:05:77:93 address=192.167.88.43 server=all
+
+      //con esto podemos registra un nuevo ip-binding
+      $API->comm("/ip/hotspot/ip-binding/add", array(
+        "mac-address" => "$macaddress",
+        "address" => "$address",
+        "server" => "$server",
+        "type" => "$type",
       ));
-      $uid = $getuser[0]['.id'];
-      echo "<script>window.location='./?hotspot-user=" . $uid . "&session=" . $session . "'</script>";
+     // $API->comm(['/ip hotspot ip-binding add type=bypassed mac-address="01:23:45:67:89:AB" address=192.168.88.254 to-address=192.168.88.254']);
+      
     }
 
     ?>
 <div class="row">
-<div class="col-8">
+<div class="col-8"> 
 <div class="card box-bordered">
   <div class="card-header">
   <h3><i class="fa fa-user-plus"></i> <?= $_add_ipbinding ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></small></h3> 
@@ -99,15 +86,15 @@ if (!isset($_SESSION["mikhmon"])) {
 		</td>
 	</tr>
   <tr>
-    <td class="align-middle">Mac Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Mac Address</td><td><input class="form-control" type="text" autocomplete="off" name="macaddress" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td class="align-middle">Address</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Address</td><td><input class="form-control" type="text" autocomplete="off" name="address" value="" autofocus></td>
   </tr>
   <tr>
     <td class="align-middle"> Type</td>
     <td>
-			<select class="form-control" name="server" required="1">
+			<select class="form-control" name="type" required="1">
 				<option>regular</option>
         <option>bypassed</option>
         <option>blocked</option>
