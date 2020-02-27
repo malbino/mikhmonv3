@@ -34,7 +34,8 @@ if(isset($ping) && !empty($session)){
         $port = $port;
     }
 function ping($host,$port){
-	$fsock = fsockopen($host,$port,$errno,$errstr,5);
+    $fsock = fsockopen($host,$port,$errno,$errstr,5);
+    
 	if (! $fsock ){
 		return (
             '<div id="pingX" class="col-12">

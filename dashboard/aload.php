@@ -58,6 +58,7 @@ include('../lang/'.$langid.'.php');
 // get routeboard info
     $getrouterboard = $API->comm("/system/routerboard/print");
     $routerboard = $getrouterboard[0];
+
     ?>
     
     <div id="r_1" class="row">
@@ -238,6 +239,9 @@ include('../lang/'.$langid.'.php');
                             </tr>
                           </thead>
                           <tbody>
+                          
+                          
+        
                       
   <?php
 
