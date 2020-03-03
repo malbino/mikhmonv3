@@ -77,13 +77,19 @@ if (!isset($_SESSION["mikhmon"])) {
                 <h3 class="card-title"><i class="fa fa-server"></i> <?= $_router_list ?></h3>
               </div>
             <div class="card-body">
-            <div class="row">
+            <div class="row"><?php
+           
+            ?>
+            
               <?php
               foreach (file('./include/config.php') as $line) {
                 $value = explode("'", $line)[1];
                 if ($value == "" || $value == "mikhmon") {
                 } else { ?>
-                    <div class="col-12">
+                 <?php
+
+                 if($value!="user"){?>
+                  <div class="col-12">
                         <div class="box bmh-75 box-bordered <?= $color[rand(1, 11)]; ?>">
                                 <div class="box-group">
                                   
@@ -116,7 +122,13 @@ if (!isset($_SESSION["mikhmon"])) {
                                 </div>
                               
                             </div>
-                          </div>
+                          </div><?php
+
+                 }else{
+
+                 } ?>
+
+                   
               <?php
             }
           }
