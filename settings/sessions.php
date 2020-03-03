@@ -125,19 +125,20 @@ if (!isset($_SESSION["mikhmon"])) {
             </div>
           </div>
         </div>
-			    <div class="col-6">
+        <!-- Display nonen para que los usuarios no puedan modificar ya que si modifican modificarian los datos de logueo y no ya no alterarian a los usuarios -->
+			    <div class="col-6" style="display:none">
           <form autocomplete="off" method="post" action="">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><i class="fa fa-user-circle"></i> <?= $_admin ?></h3>
               </div>
             <div class="card-body">
-      <table class="table table-sm">
-        <tr>
+      <table class="table table-sm" >
+        <tr >
           <td class="align-middle"><?= $_user_name ?> </td><td><input class="form-control" id="useradm" type="text" size="10" name="useradm" title="User Admin" value="<?= $useradm; ?>" required="1"/></td>
         </tr>
         <tr>
-          <td class="align-middle"><?= $_password ?> </td>
+          <td class="align-middle" ><?= $_password ?> </td>
           <td>
           <div class="input-group">
           <div class="input-group-11 col-box-10">
