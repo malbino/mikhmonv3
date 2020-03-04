@@ -278,6 +278,7 @@ include('./info.php');
     ?>
   </select>
   
+  <!-- Esto es la parde de mostrar los router list -->
   <select class="connect optfa ses text-right mr-t-10 pd-5">
     <option id="MikhmonSession" value="<?= $session; ?>"><?= $hotspotname; ?></option>
 
@@ -288,9 +289,15 @@ include('./info.php');
         if ($sesname == "" || $sesname== "mikhmon") {
         } else {
         if($sesname == $session){
-          echo '<option value="' . $sesname. '">'.$sesname. ' &#x2666;</option>';
+          if($sesname!="user"){
+            echo '<option value="' . $sesname. '">'.$sesname. ' &#x2666;</option>';
+          }
+        
+         
         }else{
-          echo '<option value="' . $sesname. '">'.$sesname. '</option>';
+          if($sesname!="user"){
+            echo '<option value="' . $sesname. '">'.$sesname. ' &#x2666;</option>';
+          }
         }
         }
       }
